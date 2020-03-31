@@ -15,7 +15,7 @@
 
 
 
-"db.iGA_acc" <- function(metric, group.membership, groups, var.names = NULL){
+"db.iGA_acc" <- function(metric, group.membership, groups, var.names = NULL, decreasing=FALSE){
     library(Rmpfr) 
     # cheching inputs
     if(length(metric) != dim(group.membership)[1]){
@@ -38,7 +38,7 @@
     }
     
     # ordering metrics, group.mebership and var.names
-    ord <- order(metric)
+    ord <- order(metric, decreasing= decreasing)
     metric <- metric[ord]
     group.membership <- group.membership[ord,]
     if (!is.null(var.names)) var.names <- var.names[ord]
